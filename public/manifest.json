@@ -1,0 +1,21 @@
+{
+  "short_name": "AQI Monitor",
+  "name": "Citizen Air Quality Monitor",
+  "description": "Real-time air quality monitoring for Delhi-NCR region",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='%233B82F6'/><text x='50' y='60' text-anchor='middle' fill='white' font-size='40' font-family='Arial'>A</text></svg>",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#3B82F6",
+  "background_color": "#F8FAFC",
+  "orientation": "portrait-primary",
+  "categories": ["health", "weather", "utilities"],
+  "lang": "en",
+  "scope": "/",
+  "prefer_related_applications": false
+}
