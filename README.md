@@ -4,7 +4,15 @@ CitizenApp presents location-based air-quality views, pollutant breakdowns and p
 
 An air-quality number is more useful when it is connected to location, constituent pollutants and a person’s saved preferences. CitizenApp combines those views in a React interface, with a Flask service and browser integrations for environmental data.
 
-[Quick start](#quick-start) · [How it works](#how-it-works) · [Development](#development) · [Contributing](CONTRIBUTING.md)
+[Quick start](#quick-start) · [Architecture](#architecture-and-request-flow) · [Development](#development) · [Contributing](CONTRIBUTING.md)
+
+## Capabilities
+
+| Workflow | Result |
+|---|---|
+| Locate conditions | Request air-quality information for the selected coordinates. |
+| Understand pollutants | Inspect charts and contextual health information. |
+| Check provenance | Distinguish live requests from synthetic fallback behavior. |
 
 ## Quick start
 
@@ -24,14 +32,14 @@ npm start
 
 Set `REACT_APP_BACKEND_URL` to the Flask origin, defaulting to http://localhost:5000. Configure Firebase, Maps, air-quality and EmailJS integrations. Current source includes hard-coded service configuration; move private keys to environment variables and rotate exposed credentials before deployment. Forecast and route views should not be treated as validated environmental predictions.
 
-## How it works
+## Architecture and request flow
 
 1. Sign in, choose a location and complete profile preferences.
 2. Request air-quality information through the application data services.
 3. Inspect pollutant charts, contextual recommendations and related views.
 4. Check the data source and request status before interpreting a displayed value as a live observation.
 
-### Component boundaries
+### Component model
 
 ```mermaid
 flowchart TB
@@ -47,7 +55,7 @@ flowchart TB
     Firebase["Firebase profile and authentication"] <--> UI
 ```
 
-### Design decisions
+### Engineering decisions
 
 The application has both Flask-backed processing and browser-side provider requests. Some frontend request failures produce synthetic fallback data. Those values are demonstration behavior, not measured air-quality observations.
 
