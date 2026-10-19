@@ -1,122 +1,61 @@
-# 🌬️ CitizenApp - Air Quality Monitoring Platform
+# CitizenApp
 
-A comprehensive air quality monitoring application that provides real-time AQI data, personalized health recommendations, and intelligent environmental insights.
+> `Air-quality dashboards backed by a Flask API and personalized browser views.`
 
-## ✨ Features
+### 🏗️ System Architecture
 
-- 🌍 **Real-time Air Quality Data** - Live AQI monitoring using Google Air Quality API
-- 📍 **Location-based Monitoring** - GPS-enabled location detection and city-specific data
-- 👤 **User Authentication** - Secure login/signup with Firebase Authentication
-- 📧 **Email Notifications** - Automated daily air quality reports via EmailJS
-- 🏥 **Health Recommendations** - Personalized advice based on health conditions
-- 📊 **Analytics Dashboard** - Comprehensive air quality insights and trends
-- 🗺️ **Safe Routes** - Pollution-aware navigation suggestions
-- 🎨 **Modern UI** - Dark theme with glass morphism design
-- 📱 **Responsive Design** - Mobile-first, works on all devices
+```mermaid
+%%{init: {'theme': 'dark'}}%%
+flowchart TD
+    N0["Location and user profile"]
+    N1["React dashboard"]
+    N2["Flask AQI endpoint"]
+    N3["Google air quality request"]
+    N4["Pollutant and health data processing"]
+    N5["Charts recommendations and route views"]
+    N0 --> N1
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+```
 
-## 🚀 Tech Stack
+### 🛠️ Production Stack
 
-- **Frontend**: React 18, Tailwind CSS
-- **Authentication**: Firebase Auth
-- **Database**: Firebase Firestore
-- **APIs**: Google Air Quality API, Google Maps API
-- **Email Service**: EmailJS
-- **Deployment**: Vercel-ready
+React · Tailwind CSS · Firebase · Flask · Google Air Quality and Maps APIs · EmailJS
 
-## 🛠️ Installation
+### ⚡ Key Engineering Capabilities
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/ryash14/CitizenApp.git
-   cd CitizenApp
-   ```
+- Location-based requests connect environmental measurements to dashboard views.
+- Flask centralizes air quality requests and response processing.
+- Firebase profile state supports personalized health and notification settings.
 
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
+### 🚀 Deployment and Local Setup
 
-3. Set up environment variables:
-   Create a `.env.local` file with:
-   ```env
-   REACT_APP_GOOGLE_MAPS_API_KEY=your_google_maps_api_key
-   REACT_APP_FIREBASE_API_KEY=your_firebase_api_key
-   REACT_APP_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
-   REACT_APP_FIREBASE_PROJECT_ID=your_project_id
-   REACT_APP_FIREBASE_STORAGE_BUCKET=your_project.appspot.com
-   REACT_APP_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
-   REACT_APP_FIREBASE_APP_ID=your_app_id
-   REACT_APP_EMAILJS_SERVICE_ID=your_service_id
-   REACT_APP_EMAILJS_TEMPLATE_ID=your_template_id
-   REACT_APP_EMAILJS_PUBLIC_KEY=your_public_key
-   ```
+Run from the repository root after cloning:
 
-4. Start the development server:
-   ```bash
-   npm start
-   ```
+```bash
+git clone https://github.com/ryash14/CitizenApp.git
+cd CitizenApp
+npm install
+npm start
+# In a separate Python virtual environment:
+# pip install flask flask-cors requests
+# python backend/app.py
+```
 
-## 🌐 Deployment
+Set `REACT_APP_BACKEND_URL` to the Flask origin, defaulting to http://localhost:5000. Configure Firebase, Maps, air-quality and EmailJS integrations. Current source includes hard-coded service configuration; move private keys to environment variables and rotate exposed credentials before deployment. Forecast and route views should not be treated as validated environmental predictions.
 
-This app is optimized for Vercel deployment:
+### Verification
 
-1. Push to GitHub
-2. Connect to Vercel
-3. Add environment variables
-4. Deploy!
+```bash
+npm run build
+```
 
-## 📱 Key Components
+These commands are provided by the source configuration; this documentation update does not claim a fresh end-to-end application run.
 
-- **Dashboard** - Main air quality monitoring interface
-- **Settings** - User preferences and notification setup
-- **Profile Setup** - Onboarding flow for new users
-- **Policy Dashboard** - Administrative insights and analytics
-- **Authentication** - Login/signup with Firebase
+### Source Map
 
-## 🎯 Core Features
-
-### Real-time Monitoring
-- Live AQI data from Google Air Quality API
-- Automatic location detection
-- Minute-level precision for scheduling
-
-### Personalized Experience
-- Health condition-based recommendations
-- Custom AQI thresholds
-- Personalized email reports
-
-### Professional Design
-- Dark theme with glass morphism
-- Responsive mobile-first design
-- Smooth animations and transitions
-
-## 🔧 Configuration
-
-### Firebase Setup
-1. Create Firebase project
-2. Enable Authentication (Email/Password + Google)
-3. Enable Firestore Database
-4. Add configuration to environment variables
-
-### Google Cloud Setup
-1. Enable Google Maps API
-2. Enable Air Quality API
-3. Create API key and add to environment variables
-
-### EmailJS Setup
-1. Create EmailJS account
-2. Set up email service
-3. Create email template
-4. Add credentials to environment variables
-
-## 📄 License
-
-This project is licensed under the MIT License.
-
-## 👨‍💻 Author
-
-**Ryash** - [@ryash14](https://github.com/ryash14)
-
----
-
-Built with ❤️ for cleaner air and healthier communities.
+- [backend/app.py](backend/app.py)
+- [src/utils/apiService.js](src/utils/apiService.js)
+- [src/pages/Dashboard.jsx](src/pages/Dashboard.jsx)
